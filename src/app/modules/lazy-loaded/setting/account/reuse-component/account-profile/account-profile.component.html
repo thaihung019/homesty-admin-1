@@ -1,0 +1,117 @@
+<form [formGroup]="profileForm">
+  <div class="row">
+    <div class="col-md-offset-1 col-md-2">
+      <mat-form-field>
+        <mat-select placeholder="Staff Role"
+                    formControlName="role">
+          <mat-option *ngFor="let role of roleOptions" [value]="role.value">
+            {{ role.label }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <ng-container *ngIf="isAdmin">
+      <div class="col-md-2">
+        <mat-form-field>
+          <input matInput placeholder="Username" formControlName="username">
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-2">
+        <mat-form-field>
+          <input matInput placeholder="Password" type="password"
+                 formControlName="password">
+        </mat-form-field>
+      </div>
+    </ng-container>
+  </div>
+  <ng-container *ngIf="!isOnAddNewProfile">
+    <div class="row">
+      <div class="col-md-offset-1 col-md-3">
+        <mat-form-field>
+          <input matInput placeholder="Fullname"
+                 formControlName="fullName">
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-2">
+        <mat-form-field>
+          <mat-datepicker-toggle matSuffix [for]="birthday">
+          </mat-datepicker-toggle>
+          <input matInput [matDatepicker]="birthday"
+                 placeholder="Birthday" formControlName="dob">
+          <mat-datepicker #birthday></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-2">
+        <div class="checkbox checkbox-gender">
+          <label>
+            <input type="checkbox" formControlName="gender">
+            <span class="checkbox-material"><span class="check"></span></span> Male
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-offset-1 col-md-3">
+        <mat-form-field>
+          <input matInput placeholder="Email"
+                 formControlName="email">
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-2">
+        <mat-form-field>
+          <input matInput placeholder="Phone 1"
+                 formControlName="phone1">
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-2">
+        <mat-form-field>
+          <input matInput placeholder="Phone 2"
+                 formControlName="phone2">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-offset-1 col-md-7">
+        <mat-form-field>
+          <input matInput placeholder="Address"
+                 formControlName="address">
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-offset-1 col-md-2">
+        <mat-form-field>
+          <input matInput placeholder="Position"
+                 formControlName="position">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="avatar-wrapper">
+      <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+        <div class="fileinput-new thumbnail img-circle">
+          <img alt="..." src="../../../../../../../assets/img/avatar-placeholder.jpg">
+        </div>
+        <div class="fileinput-preview fileinput-exists thumbnail img-circle" data-trigger="fileinput"></div>
+        <div>
+          <span class="btn btn-round btn-rose btn-file">
+            <span class="fileinput-new">Add Photo</span>
+            <span class="fileinput-exists">Change</span>
+            <input name="avatar" type="file"
+                   (change)="detectAvatarChange($event)">
+          </span>
+          <br>
+          <a class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput" href="#pablo"><i
+            class="fa fa-times"></i> Remove</a>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</form>

@@ -1,0 +1,14 @@
+<div class="wrapper" [class.wrapper-full-page]="!isLoggedIn">
+  <div *ngIf="isLoggedIn"
+       class="sidebar" data-active-color="white"
+       data-background-color="red"
+       data-image="../assets/img/sidebar-bg/sidebar-1.jpg">
+    <app-vertical-nav></app-vertical-nav>
+    <div class="sidebar-background"
+         style="background-image: url(../assets/img/sidebar-bg/sidebar-1.jpg)"></div>
+  </div>
+  <div [class]="isLoggedIn ? 'main-panel ps' : ''">
+    <app-horizontal-nav *ngIf="isLoggedIn"></app-horizontal-nav>
+    <router-outlet></router-outlet>
+  </div>
+</div>

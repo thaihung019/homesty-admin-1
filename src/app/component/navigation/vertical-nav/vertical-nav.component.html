@@ -1,0 +1,93 @@
+<div class="logo">
+  <div class="logo-normal">
+    <a class="simple-text">
+      Homesty Project
+    </a>
+  </div>
+
+  <div class="logo-img">
+    <img src="/assets/img/angular2-logo-white.png">
+  </div>
+</div>
+
+<perfect-scrollbar class="sidebar-wrapper">
+  <div class="user" *ngIf="currentStaff">
+    <div class="photo">
+      <img src="../../../../assets/img/staff/{{currentStaff.avatar}}">
+    </div>
+    <div class="info">
+      <a class="collapsed" data-toggle="collapse" href="#collapseExample">
+        <span>
+          {{currentStaff.fullName}}
+          <b class="caret"></b>
+        </span>
+      </a>
+      <div class="collapse" id="collapseExample">
+        <ul class="nav">
+          <li>
+            <a href="javascript:void(0)">
+              <span class="sidebar-mini">MP</span>
+              <span class="sidebar-normal">My Profile</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)">
+              <span class="sidebar-mini">EP</span>
+              <span class="sidebar-normal">Edit Profile</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/login">
+              <span class="sidebar-mini">L</span>
+              <span class="sidebar-normal">Logout</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-container">
+    <ul class="nav">
+      <li *ngFor="let item of navItems"
+          routerLinkActive="active" class="{{item.klass}}">
+        <a data-toggle="collapsed" routerLink="{{item.url}}">
+          <i class="material-icons">{{item.icon}}</i>
+          <p>{{item.title}}
+            <b *ngIf="item.children" class="caret"></b>
+          </p>
+        </a>
+      </li>
+      <li routerLinkActive="active" class="" *ngIf="currentStaff.role === 0">
+        <a data-toggle="collapse" href="#setting"
+           class="collapsed" aria-expanded="false">
+          <i class="material-icons">build</i>
+          <p>Setting<b class="caret"></b></p>
+        </a>
+        <div class="collapse" id="setting"
+             aria-expanded="false" style="height: 0px;">
+          <ul class="nav">
+            <li routerLinkActive="active">
+              <a routerLink="/setting/staff">
+                <span class="sidebar-mini">S</span>
+                <span class="sidebar-normal">Staff</span>
+              </a>
+            </li>
+            <li routerLinkActive="active">
+              <a routerLink="/setting/room">
+                <span class="sidebar-mini">R</span>
+                <span class="sidebar-normal">Room</span>
+              </a>
+            </li>
+            <li routerLinkActive="active">
+              <a routerLink="/setting/hotel">
+                <span class="sidebar-mini">H</span>
+                <span class="sidebar-normal">Hotel</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+</perfect-scrollbar>

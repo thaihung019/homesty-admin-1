@@ -1,0 +1,39 @@
+<button class="btn btn-success btn-round setting-account-new-btn" routerLink="../new">
+  <i class="material-icons">add_circle_outline</i> New
+  <div class="ripple-container"></div>
+</button>
+<div class="row">
+  <div *ngFor="let staff of staffList"
+       class="col-lg-3 col-md-4 col-sm-4 col-xs-8 col-md-offset-0 col-sm-offset-0 col-xs-offset-2">
+    <div class="card card-product">
+      <div class="card-image" data-header-animation="true">
+        <img class="img" src="../../../../../../assets/img/staff/{{staff.avatar}}">
+      </div>
+      <div class="card-content">
+        <div class="card-actions">
+          <button class="btn btn-success btn-simple"
+                  [routerLink]="['../detail/', staff.username]"
+                  matTooltip="View Detail">
+            <i class="material-icons">assignment_ind</i>
+          </button>
+          <button class="btn btn-danger btn-simple" matTooltip="Delete"
+                  (click)="handleDeleteStaff(staff.username, staff.fullName)">
+            <i class="material-icons">delete</i>
+          </button>
+        </div>
+        <h4 class="card-title">
+          <a>{{ staff.fullName }}</a>
+        </h4>
+      </div>
+      <div class="card-footer">
+        <div class="price">
+          <h4>{{ staff.position }}</h4>
+        </div>
+        <div class="stats pull-right">
+          <p class="category">{{ (staff.gender) ? 'Male' : 'Female' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
